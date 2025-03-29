@@ -51,6 +51,13 @@
             background-color: white;
             border: 1px solid #ddd;
             border-radius: 4px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .timestamp {
+            color: #666;
+            font-size: 0.9em;
         }
     </style>
 </head>
@@ -67,7 +74,10 @@
             <h2>已記錄的數字：</h2>
             {% if numbers %}
                 {% for number in numbers %}
-                    <div class="number-item">{{ number }}</div>
+                    <div class="number-item">
+                        <span class="value">{{ number.value }}</span>
+                        <span class="timestamp">{{ number.created_at.strftime('%Y-%m-%d %H:%M:%S') }}</span>
+                    </div>
                 {% endfor %}
             {% else %}
                 <p>還沒有記錄任何數字</p>
