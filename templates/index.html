@@ -1,27 +1,78 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Hello World</title>
+    <meta charset="UTF-8">
+    <title>數字記錄器</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
             background-color: #f0f0f0;
         }
-        h1 {
-            color: #333;
-            padding: 20px;
-            border-radius: 10px;
+        .container {
             background-color: white;
+            padding: 30px;
+            border-radius: 10px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        input[type="number"] {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-right: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .numbers {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #f8f8f8;
+            border-radius: 4px;
+        }
+        .number-item {
+            margin: 5px 0;
+            padding: 10px;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 4px;
         }
     </style>
 </head>
 <body>
-    <h1>Hello, World!</h1>
+    <div class="container">
+        <h1>數字記錄器</h1>
+        
+        <form method="POST">
+            <input type="number" name="number" placeholder="請輸入一個數字" required>
+            <button type="submit">提交</button>
+        </form>
+
+        <div class="numbers">
+            <h2>已記錄的數字：</h2>
+            {% if numbers %}
+                {% for number in numbers %}
+                    <div class="number-item">{{ number }}</div>
+                {% endfor %}
+            {% else %}
+                <p>還沒有記錄任何數字</p>
+            {% endif %}
+        </div>
+    </div>
 </body>
 </html>
